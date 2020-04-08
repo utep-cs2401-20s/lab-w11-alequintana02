@@ -1,16 +1,18 @@
 public class newSorting {
     void newSorting(int[]array,int size){
+if (array.length <= size) {
+    quickSort(array);
 
+} else {
+    newSorting(LH, size);
+    newSorting(RH,size);
+    mergeSortedHalves();
+   }
 
-
-
-    }
-
-
-
+}//closes newSorting
 
     /********MERGE SORT******/
-    static void merging(int[]array,int i,int j,int k){
+    void mergeSortedHalves(int[]array,int i,int j,int k){
         int size = k-i+1;
         int position=0;
         int leftPos=0;
@@ -49,7 +51,7 @@ public class newSorting {
         }
     }
     /********QUICKSORT******/
-    static int partitioning(int[]array,int i,int k) {
+     void partitioning(int[]array,int i,int k) {
         int l = 0;
         int h = 0;
         int MP = 0;
@@ -81,7 +83,7 @@ public class newSorting {
         return h;
     }
 
-    static void quickSort(int[]array,int i, int k) {
+    void quickSort(int[]array,int i, int k) {
         int j = 0;
         if (i >= k) {
             return;
