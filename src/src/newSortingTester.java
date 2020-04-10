@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class newSortingTester {
+class newSortingTester {
 
     @org.junit.jupiter.api.Test
 
@@ -49,10 +49,10 @@ public class newSortingTester {
 
     @Test
     void test5() {
-        //
+        //I wanted to see the system time for an already sorted list
         newSorting ns = new newSorting();
-        int [] array = {};
-        int [] exp = {};
+        int [] array = {1,2,3,4,5,6,7,8};
+        int [] exp = {1,2,3,4,5,6,7,8};
         ns.newSorting(array,4);
         assertArrayEquals(exp,array);
     }

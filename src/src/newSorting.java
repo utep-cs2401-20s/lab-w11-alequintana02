@@ -4,93 +4,75 @@ if (array.length <= size) {
     quickSort(array);
 
 } else {
+    int mid = array.length / 2;
+    int[] LH = new int[mid];
+    int[] RH = new int[array.length - mid];
+    int toPopulate = array.length - mid;
+    for (int i = 0; i < LH.length; i++) {
+        LH[i] = array[i];
+    }
+    for (int i = 0; i < RH.length - mid; i++) {
+        RH[i] = array[i + toPopulate];
+        i++;
+    }
     newSorting(LH, size);
-    newSorting(RH,size);
-    mergeSortedHalves();
+    newSorting(RH, size);
+    mergeSortedHalves(array, LH, RH);
    }
 
 }//closes newSorting
 
     /********MERGE SORT******/
-    void mergeSortedHalves(int[]array,int i,int j,int k){
-        int size = k-i+1;
-        int position=0;
-        int leftPos=0;
-        int rightPos=0;
-        int [] mergedHalves=new int[size];
-        leftPos=i;
-        rightPos=j+1;
-        while (leftPos <= j && rightPos <=k){
-            if(array[leftPos]<=array[rightPos]) {
-                mergedHalves[position] = array[leftPos];
-            }else {
-                mergedHalves[position] = array[rightPos];
-                rightPos++;
-            }
-            position++;
-        } //closes while loop
-        while (leftPos <=j) {
-            mergedHalves[position] = array[leftPos];
-        }
-        while (rightPos<=k) {
-            mergedHalves[position] = array[rightPos];
-            rightPos++;
-            position++;
-        }
-        for(position=0;position<size;position++){
-            array[i + position] = mergedHalves[position];
-        }//closes while
-    }//closes merge method
-    static void mergeSort(int[]array,int i,int k){
-        int j=0;
-        if (i<k){
-            j=(i+k)/2;
-            mergeSort(array,i,j);
-            mergeSort(array,j+1,k);
-            merging(array,i,j,k);
-        }
-    }
-    /********QUICKSORT******/
-     void partitioning(int[]array,int i,int k) {
-        int l = 0;
-        int h = 0;
-        int MP = 0;
-        int piv = 0;
-        int temp = 0;
-        boolean done = false;
-
-        MP = i + (k - i) / 2;
-        piv = array[MP];
-        l = i;
-        h = k;
-        while (!done) {
-            while (array[1] < piv) {
-                l++;
-            }
-            while (piv < array[h]) {
-                h--;
-            }
-            if (l >= h) {
-                done = true;
+    void mergeSortedHalves(int[]array,int [] LH,int [] RH) {
+        int pointer1 = 0;
+        int pointer2 = 0;
+        int i = 0;
+        while (pointer1 < LH.length && pointer2 < RH.length) {
+            if (LH[pointer1] < RH[pointer2]) {
+                array[i++] = LH[pointer1++];
             } else {
-                temp = array[l];
-                array[l] = array[h];
-                array[h] = temp;
+                array[i++] = RH[pointer2++];
             }
-            l++;
-            h--;
+        } //closes while
+        while (pointer1 < LH.length) {
+            array[i++] = LH[pointer1++];
         }
-        return h;
+        while (pointer2 < RH.length) {
+            array[i++] = RH[pointer2++];
+        }
+    }//closes merge method
+
+    /********QUICKSORT******/
+     int partitioning(int[]array, int start, int end) {
+        int piv = array[start]; //we select the first element as the pivot
+        int part = start + 1;
+        for (int i = start+1; i <= end; i++) {
+            if (array[i] < piv) {
+                if (i != part) {
+                    int temp = array[part];
+                    array[part] = array[i];
+                    array[i] = temp;
+                }
+                part++;
+            }
+        }
+        array[start] = array[part-1];
+        array[part-1] = piv;
+
+      return part - 1;
     }
 
-    void quickSort(int[]array,int i, int k) {
-        int j = 0;
-        if (i >= k) {
-            return;
+    void quickSort(int[]array,int start, int end) {
+        int part;
+        if (start < end) {
+            part = partitioning(array, start, end);
+            quickSort(array, start, part-1);
+            quickSort(array, part + 1, end);
         }
-        j = partitioning(array, i, k);
-        quickSort(array, i, j);
-        quickSort(array, j + 1, k);
     }
-}
+
+    void quickSort(int[]array){
+         quickSort(array,0,array.length);
+    }
+}//closes newSorting class
 
