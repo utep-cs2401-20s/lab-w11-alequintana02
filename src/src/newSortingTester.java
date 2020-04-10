@@ -2,12 +2,12 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class newSortingTester {
+public class newSortingTester {
 
     @org.junit.jupiter.api.Test
 
     @Test
-    void test1() {
+    public void test1() {
         //example in pseudocode for newSorting
         newSorting ns = new newSorting();
         //create arrays
@@ -18,7 +18,7 @@ class newSortingTester {
     }
 
     @Test
-    void test2() {
+    public void test2() {
         //contains duplicated ints
         newSorting ns = new newSorting();
         int [] array = {1,7,1,6,9,6,3,5};
@@ -28,7 +28,7 @@ class newSortingTester {
     }
 
     @Test
-    void test3() {
+    public void test3() {
         //contains odd numbered A.length
         newSorting ns = new newSorting();
         int [] array = {1,7,6,9,8,3,2};
@@ -38,7 +38,7 @@ class newSortingTester {
     }
 
     @Test
-    void test4() {
+    public void test4() {
         //contains negative ints and duplicates
         newSorting ns = new newSorting();
         int [] array = {6,-9,3,-7,6,1};
@@ -48,7 +48,7 @@ class newSortingTester {
     }
 
     @Test
-    void test5() {
+    public void test5() {
         //I wanted to see the system time for an already sorted list
         newSorting ns = new newSorting();
         int [] array = {1,2,3,4,5,6,7,8};
