@@ -9,8 +9,8 @@ public class newSortingTester {
     @Test
     public void test1() {
         //example in pseudocode for newSorting
+        //time ms
         newSorting ns = new newSorting();
-        //create arrays
         int [] array = {3,10,1,5,2,7,4,9,8};
         int [] exp = {1,2,3,4,5,7,8,9,10};
         ns.newSorting(array,4);
@@ -19,7 +19,8 @@ public class newSortingTester {
 
     @Test
     public void test2() {
-        //contains duplicated ints
+        //contains duplicated ints, want to test if mergedSortedHalves works properly
+        // time ms
         newSorting ns = new newSorting();
         int [] array = {1,7,1,6,9,6,3,5};
         int [] exp = {1,1,3,5,6,6,7,9};
@@ -29,7 +30,8 @@ public class newSortingTester {
 
     @Test
     public void test3() {
-        //contains odd numbered A.length
+        //contains odd numbered A.length, want to test how newSorting will handle
+        //time: ms
         newSorting ns = new newSorting();
         int [] array = {1,7,6,9,8,3,2};
         int [] exp = {1,2,3,6,7,8,9};
@@ -40,6 +42,7 @@ public class newSortingTester {
     @Test
     public void test4() {
         //contains negative ints and duplicates
+        //time ms
         newSorting ns = new newSorting();
         int [] array = {6,-9,3,-7,6,1};
         int [] exp = {-9,-7,1,3,6,6};
@@ -50,6 +53,7 @@ public class newSortingTester {
     @Test
     public void test5() {
         //I wanted to see the system time for an already sorted list
+        //time ms
         newSorting ns = new newSorting();
         int [] array = {1,2,3,4,5,6,7,8};
         int [] exp = {1,2,3,4,5,6,7,8};
