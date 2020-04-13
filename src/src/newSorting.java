@@ -44,7 +44,7 @@ public class newSorting {
         //base case
         if (end-start<=0) {
             return;
-        }
+        }//the following was adapted from Dr. Ceberio's notes on quick sorting
         int piv = array[start]; //we select the first element as the pivot
         int less = start;
         int more = end;
