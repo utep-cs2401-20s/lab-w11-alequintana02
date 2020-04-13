@@ -41,7 +41,7 @@ public class newSortingTester {
 
     @Test
     public void test4() {
-        //contains negative ints and duplicates
+        //contains negative ints and duplicates, testing if partitioning will properly sort values
         //time ms
         newSorting ns = new newSorting();
         int [] array = {6,-9,3,-7,6,1};
@@ -52,7 +52,7 @@ public class newSortingTester {
 
     @Test
     public void test5() {
-        //I wanted to see the system time for an already sorted list
+        //I wanted to see the system time for an already sorted list, i expect it to be the fastest of all test cases
         //time ms
         newSorting ns = new newSorting();
         int [] array = {1,2,3,4,5,6,7,8};
