@@ -1,4 +1,5 @@
 public class newSorting {
+/*************newSorting*************/
     void newSorting(int[]array,int size){
     if (array.length <= size) {
         quickSort(array);
@@ -17,26 +18,24 @@ public class newSorting {
         mergeSortedHalves(array, LH, RH);
        }
 }//closes newSorting
-
 /*************mergeSortedHalves*************/
     void mergeSortedHalves(int[]array,int [] LH,int [] RH) {
-        int iteratorL = 0;
-        int iteratorR = 0;//
-        for (int i = 0; i < array.length; i++) {
-            if (iteratorL == LH.length) {//need to check bounds of LH
-                array[i] = RH[iteratorR]; //we populate the opposite array
-            }
-            if (iteratorR == RH.length) {//need to check bounds of RH
-                array[i] = LH[iteratorL];//we populate the opposite array
-                iteratorL++;
-            }
-            if (LH[iteratorL] <= RH[iteratorR]) {//want the smallest element to be first
-                array[i] = LH[iteratorL];
-                iteratorL++;
-            } else { //if LH iter isn't the smallest, then RH iter is
-                array[i] = RH[iteratorR];
-                iteratorR++;
-            }
+     int iteratorL=0;
+     int iteratorR=0;
+      for (int i = 0; i < array.length; i++) {
+         if (iteratorL == LH.length) {//need to check bounds of LH
+             array[i] = RH[iteratorR]; //we populate the opposite array
+             iteratorR++; continue;
+         } if (iteratorR == RH.length) {//need to check bounds of RH
+             array[i] = LH[iteratorL];//we populate the opposite array
+             iteratorL++;continue;
+         } if (LH[iteratorL] < RH[iteratorR]) {//want the smallest element to be first
+             array[i] = LH[iteratorL];
+             iteratorL++;continue;
+         } else { //if LH iter isn't the smallest, then RH iter is
+             array[i] = RH[iteratorR];
+             iteratorR++;continue;
+         }//closes else
       }//closes for loop
  }//closes merge method
 
@@ -54,13 +53,12 @@ public class newSorting {
                 less++;
             while (more >= start && array[more] > piv)
                 more--;
-
             if (less < more) {
                 int temp = array[less];
                 array[less] = array[more];
                 array[more] = temp;
             }
-        }
+        }//closes while
         int temp = array[start];
         array[start] = array[more];
         array[more] = temp;
@@ -68,9 +66,9 @@ public class newSorting {
         quickSort(array, start, more - 1);
         quickSort(array, more + 1, end);
     }
-
+/******************QUICKSORT*******************/
     void quickSort(int[]array){
-         quickSort(array,0,array.length);
+         quickSort(array,0,array.length-1);
     }
 }//closes newSorting class
 
